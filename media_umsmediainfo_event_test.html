@@ -1,0 +1,42 @@
+
+<!DOCCTYPE html>
+<html>
+<head>
+    <script>
+        function init() {
+            var vid = document.getElementById("myVideo");
+            var options = {};
+            options.htmlMediaOption = {};
+            options.htmlMediaOption.useUMSMediaInfo = true;
+           
+            var source = document.createElement("source");
+            source.setAttribute('src','http://media.w3.org/2010/05/sintel/trailer.mp4');
+            source.setAttribute('type','video/mp4;mediaOption=' + escape(JSON.stringify(options)));
+            vid.appendChild(source);
+
+            vid.addEventListener("umsmediainfo", function(event) {
+              var a = document.getElementById("log");
+              var new_elem = document.createElement("p");
+              new_elem.innerText = event.detail;
+              new_elem.style.border = "solid";
+              new_elem.style.wordWrap = "break-word";
+              a.appendChild(new_elem);
+              //a.innerText = event.detail;
+              console.log(event.detail);
+
+              var time_tag = document.getElementById("updated_time");
+              time_tag.innerHTML = new Date();
+            }, false);
+
+        }
+    </script>
+</head>
+<body style="background-color: white" onload = init();>
+    <video id="myVideo" width=480px height=360px controls>
+    </video>
+    <div> last updated time: </div>
+    <div id="updated_time"></div>
+    <div> ums info log: </div>
+    <div id="log" style="height: 900px; overflow-y: scroll"></div>
+</body>
+</html>
