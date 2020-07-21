@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table#t01 {
+  width: 100%;    
+  background-color: #f1f1c1;
+}
+ 
+input { 
+caret-color: auto; 
+caret-width: auto; 
+display: block; 
+margin-bottom: .5em; 
+} 
+
+input.custom1 {
+caret-clor: black;
+caret-width: 1px;
+}
+
+input.custom4 { 
+caret-color: green; 
+caret-width: 4px; 
+} 
+
+p.custom { 
+caret-color: red; 
+caret-width: 8px; 
+}
+</style>
+<head> 
+<title>caret-width' CSS property</title>
+</head>
+
+<body onload="loadpage()">
+<body onreload="loadpage()">
+<body onkeydown="key_down(event);">
+<body style="background-color:white;">
+	<h1><p id="id_text">Title : Verify caret width specified by the 'caret-width' CSS property<p></h1>
+    <p id="id_description"> In summary, Verify caret width specified by the 'caret-width' CSS property</p>
+    <table style="width:100%">
+	  <tr>
+		<th>Properties</th>
+		<th>Value</th> 
+		<th>Description</th>
+	  </tr>
+	  <tr>
+		<td>trustedLevel</td>
+		<td>default</td>
+		<td></td>
+	  </tr>
+	</table>
+	<br>
+    
+   <table>
+   <tr><th>Test Case</th><th>Description</th><th>To compare</th></tr>
+   <tr><th>1</th><th><input value="This field uses a default caret." size="64"/></th><th><input value="1px caret will be displayed"</th></tr>
+   <tr><th>2</th><th><input class="custom4" value="I have a custom green caret color 
+    (and 4px wide)!" size="64"/> </th></tr>
+   <tr><th>3</th><th><p contenteditable class="custom">This paragraph can be 
+    edited, and its caret has red color (and 8px wide) as well!</p> </th></tr>
+   </table>
+   <!-- end of 'caret-width.html' -->
+</body>
+</html>
