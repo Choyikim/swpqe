@@ -1,0 +1,28 @@
+<html>
+<head>
+<style>
+button:focus {
+  background-color: yellow;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head>
+<script language="javascript" src="./keycode.js"></script>
+<script language="javascript" src="./common.js"></script>
+<script language="javascript" src="./menu.js"></script>
+<script>
+function initialize() {
+	var buttonList = document.querySelectorAll("[type=button]");
+	for (var inx = 0;inx < buttonList.length;inx++) {
+		 buttonList[inx].onkeydown = buttonList[inx].onkeyup = buttonList[inx].onkeypress = remoteKeyEvent;
+		 console.log("button");
+	}
+}
+</script>
+<body onload="initialize()">
+		<h1>Disabled button test</h1>
+		<p><b> aria-disabled='true', Fosucing button will read - Button Click Me, Deactivated'</b></p>
+		<button id="1" type="button" aria-disabled="true">1. Click Me!</button>
+		<p><b> aria-disabled='false', Fosucing button will read - Button Click Me'</b></p>
+		<button id="2" type="button" aria-disabled="false" autofocus>2. Click Me!</button>
+</body>
+</html>
