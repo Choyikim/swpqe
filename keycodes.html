@@ -1,0 +1,127 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+ 
+
+<body onkeydown="key_down(event);" onkeyup="key_up(event);" onkeypress="key_press(event);" onmousedown="mouse_down(event);" onmouseup="mouse_up(event);" onclick="mouse_click(event);" ondbl="mouse_dblclick(event);">
+
+<script>
+var VK_RED = 403;
+var VK_GREEN = 404;
+var VK_YELLOW = 405;
+var VK_BLUE = 406;
+var key_down_timestamp;
+var key_up_timestamp;
+var key_down_count = 0;
+var previous_event = "";
+
+function key_press(e)
+{
+//	var	keycode = e.which;
+	document.getElementById('press').innerHTML += " " + e.which + "/" + e.charCode + "/" + e.keyCode;
+}
+
+function key_up(e)
+{
+	var d = new Date();
+	key_up_timestamp = d.getTime();
+
+	var elapsed = key_up_timestamp - key_down_timestamp;
+	var output = 'End: ' + key_up_timestamp + '<br>';
+	var avg = (key_down_count / elapsed) * 1000;
+	output += 'Key Count: ' + key_down_count + '<br>';
+	output += 'Elapsed(msec): ' + elapsed + '<br>';
+	output += 'avg(event/sec): ' + avg + '<br>';
+	document.getElementById("console").innerHTML += output;
+
+//	var	keycode = e.which;
+	document.getElementById('up').innerHTML += " " + e.which + "/" + e.charCode + "/" + e.keyCode;
+	key_down_count = 0;
+	previous_event = 'key_up';
+	process_key_up(e.which);
+}
+
+function key_down(e)
+{
+	if ( previous_event != 'key_down' ) {
+		var d = new Date();
+		key_down_timestamp = d.getTime();
+
+		var output = 'Start: ' + key_down_timestamp + '<br>';
+		document.getElementById("console").innerHTML = output;
+	}
+	key_down_count += 1;
+
+//	var	keycode = e.which;
+	document.getElementById('down').innerHTML += " " + e.which + "/" + e.charCode + "/" + e.keyCode;
+	previous_event = 'key_down';
+	process_key_down(e.which);
+}
+
+function mouse_down(e)
+{
+	var	keycode = e.which;
+	document.getElementById('mouse').innerHTML += " down";
+}
+
+function mouse_up(e)
+{
+	var	keycode = e.which;
+	document.getElementById('mouse').innerHTML += " up";
+}
+
+function mouse_click(e)
+{
+	var	keycode = e.which;
+	document.getElementById('mouse').innerHTML += " click";
+}
+
+function mouse_dblclick(e)
+{
+	var	keycode = e.which;
+	document.getElementById('mouse').innerHTML += " dblclick";
+}
+
+function process_key_down(code)
+{
+	switch(code)
+	{
+	case VK_RED:
+		set_box_color("red");
+		break;
+	case VK_GREEN:
+		set_box_color("green");
+		break;
+	case VK_YELLOW:
+		set_box_color("yellow");
+		break;
+	case VK_BLUE:
+		set_box_color("blue");
+		break;
+	}
+}
+function process_key_up(code)
+{
+	set_box_color("black");
+}
+function set_box_color(color)
+{
+	document.getElementById('box').style.backgroundColor = color;
+}
+
+</script>
+
+
+
+<div id="console" style="position:absolute; left:500; top:200; width:300; height:200"></div>
+<div id="box" style="position:absolute; left:500; top:400; width:300; height:200; background-color:black"></div>
+<input type="text" onkeypress="return event.charCode>=48&&event.charCode<=57">
+<input type="tel" onkeypress="return event.charCode>=48&&event.charCode<=57">
+
+<br>key_up: <span id="up"></span>
+<br>key_down: <span id="down"></span>
+<br>key_press: <span id="press"></span>
+
+<br>mouse: <span id="mouse"> down up</span>
+</body></html>
