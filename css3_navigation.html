@@ -1,0 +1,63 @@
+
+<!DOCTiYPE html>
+<!-- copied from https://www.quackit.com/css/css3/properties/css_nav-down.cfm--!>
+<title>Example</title>
+<style>
+div,
+button { 
+      position: absolute; 
+}
+
+div {
+      top: 60%;
+}
+
+button:focus {
+    background-color: blue;
+}
+button#b1 {
+      top: 5%;
+      left: 30%;
+      nav-right: #b2;
+      nav-left: #b4;
+      nav-down: #b2;
+      nav-up: #b4;
+}
+
+button#b2 {
+      top: 30%;
+      left: 55%;
+      nav-right: #b3;
+      nav-left: #b1;
+      nav-down: #b3; 
+      nav-up: #b1;
+}
+
+button#b3 {
+      top: 55%; 
+      left: 30%;
+      nav-right: #b4; 
+      nav-left: #b2;
+      nav-down: #b4;
+      nav-up: #b2;
+}
+
+button#b4 {
+      top: 30%; 
+      left: 5%;
+      nav-right: #b1; 
+      nav-left: #b3;
+      nav-down: #b1; 
+      nav-up: #b3;
+}
+</style>
+
+<button id="b1" autofocus>Button 1</button>
+<button id="b2">Button 2</button>
+<button id="b3">Button 3</button>
+<button id="b4">Button 4</button>
+
+<!--<div>
+    <p>Hold the <kbd>Shift</kbd> key down while navigating with the arrow keys.</p>
+</div>-->
+
