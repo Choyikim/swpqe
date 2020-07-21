@@ -1,0 +1,42 @@
+
+<!DOCCTYPE html>
+<html>
+<script>
+    var flag_visibility = false;
+    function toggle_visibility() {
+      var video = document.getElementById("myVideo");
+      
+      if (!flag_visibility) {
+        video.style.visibility = "hidden";
+        flag_visibility = true;
+      }
+      else {
+        video.style.visibility = "visible";
+        flag_visibility = false;
+      }
+    }
+
+    var flag_display = false;
+    function toggle_display() {
+      var video = document.getElementById("myVideo");
+      
+      if (!flag_display) {
+        video.style.display = "none";
+        flag_display = true;
+      }
+      else {
+        video.style.display = "";
+        flag_display = false;
+      }
+    }
+</script>
+<body>
+    <video id="myVideo" controls>
+        <source src="http://media.w3.org/2010/05/sintel/trailer.mp4">
+    </video>
+    <br></br>
+    <button type="button" onclick=toggle_visibility();>Toggle visibility</button>
+    <br></br>
+    <button type="button" onclick=toggle_display();>Toggle display</button>
+</body>
+</html>
